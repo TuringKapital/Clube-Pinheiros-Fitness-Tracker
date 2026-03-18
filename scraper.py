@@ -4,7 +4,7 @@ import os
 from datetime import datetime, timezone
 
 URL = "https://portalecp.ecp.org.br/servico/servicoconsulta/ConsultaOcupacao"
-DATA_FILE = "data/occupancy.csv"
+DATA_FILE = "data/occupancy.csv" 
 
 def scrape():
     response = requests.get(URL, timeout=10)
