@@ -113,7 +113,7 @@ function parseCSV(text) {
 
 // Returns average occupancy per hour [0..23] for a given set of records
 function hourlyAverages(records) {
-  const buckets = Array.from({length: 48}, () => ({ sum: 0, count: 0 }));
+  const buckets = Array.from({length: 24}, () => ({ sum: 0, count: 0 }));
   for (const r of records) {
     const h = r.date.getHours();
     buckets[h].sum += r.occupancy;
@@ -123,7 +123,7 @@ function hourlyAverages(records) {
 }
 
 function buildChart(canvasId, label, avgs, color) {
-  const labels = Array.from({length: 48}, (_, i) => `${String(i).padStart(2,"0")}:00`);
+  const labels = Array.from({length: 24}, (_, i) => `${String(i).padStart(2,"0")}:00`);
   new Chart(document.getElementById(canvasId), {
     type: "line",
     data: {
