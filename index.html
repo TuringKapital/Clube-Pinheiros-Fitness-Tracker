@@ -115,7 +115,7 @@ function parseCSV(text) {
 function hourlyAverages(records) {
   const buckets = Array.from({length: 24}, () => ({ sum: 0, count: 0 }));
   for (const r of records) {
-    const h = r.date.getUTCHours();
+    const h = r.date.getHours();
     buckets[h].sum += r.occupancy;
     buckets[h].count++;
   }
@@ -186,7 +186,7 @@ async function main() {
     // Per-day charts
     const chartsEl = document.getElementById("charts");
     for (let d = 0; d < 7; d++) {
-      const dayRecords = records.filter(r => r.date.getUTCDay() === d);
+      const dayRecords = records.filter(r => r.date.getDay() === d);
       if (dayRecords.length === 0) continue;
 
       const id = `chart-${d}`;
